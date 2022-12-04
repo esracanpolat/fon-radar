@@ -11,10 +11,7 @@ export default function Customers(props) {
     const [search, setSearch] = useState();
     const [createModal, setCreateModal] = useState(false);
 
-    console.log(props, "props");
     function searchFunc(e) {
-        // const newCustomers = e ? customerData.filter((searchValue) => (searchValue.companyName).includes(e)) : customers
-        // setCustomerData(newCustomers);
         setSearch(e)
         dispatch(CustomersSearch(e))
     }

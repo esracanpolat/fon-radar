@@ -31,7 +31,6 @@ export default function customerReducer(state = initialState, action) {
             const newCustomertaxNumberName = state.customers.filter((item) => (item.taxNumber).toString().includes(action.payload));
             const newArray = [...newCustomerCompanyName, ...newCustomertaxNumberName]
 
-            console.log(action.payload, "filterd");
             return { customers: state.customers, message: state.filterTodos, filterCustomers: action.payload ? newArray : state.customers };
         case actionTypes.GET_ALL_CUSTOMERS:
             return { customers: action.payload.data, message: action.payload.statusText };

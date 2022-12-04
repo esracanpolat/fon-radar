@@ -19,15 +19,12 @@ export const UpdateCustomer = ({ showModal, setShowModal }) => {
         }
     }, [customerDetail]);
 
-    console.log(customerDetail, "in modal");
-    const { register, handleSubmit, reset, setValue } = useForm();
+    -    const { register, handleSubmit, reset, setValue } = useForm();
 
     function onSubmit(e) {
-        console.log(e, "customerDetail");
         const newUpdateCustomer = { ...e, id: customerDetail.id }
         setShowModal(false);
         dispatch(updateCustomerApiRequest(newUpdateCustomer))
-        console.log(newUpdateCustomer, "newUpdateCustomer");
     }
     return (
         <div>

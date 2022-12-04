@@ -14,7 +14,6 @@ export function deleteCustomerApiRequest(id) {
 
 export function updateCustomerApiRequest(customer) {
     return async (dispatch) => {
-        console.log(customer, "customer");
         axiosInstance.put("/customers/" + customer.id, {
             companyName: customer.companyName,
             taxNumber: Number(customer.taxNumber),
