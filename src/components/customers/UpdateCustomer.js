@@ -19,7 +19,7 @@ export const UpdateCustomer = ({ showModal, setShowModal }) => {
         }
     }, [customerDetail]);
 
-    -    const { register, handleSubmit, reset, setValue } = useForm();
+    const { register, handleSubmit, reset, setValue } = useForm();
 
     function onSubmit(e) {
         const newUpdateCustomer = { ...e, id: customerDetail.id }
