@@ -11,21 +11,40 @@ export function deleteCustomerApiRequest(id) {
             });
     };
 }
-export function getCustomerApiRequest() {
+
+export function updateCustomerApiRequest(customer) {
     return async (dispatch) => {
-        axiosInstance.get("/customers")
+        console.log(customer, "customer");
+        axiosInstance.put("/customers/" + customer.id, {
+            companyName: customer.companyName,
+            taxNumber: Number(customer.taxNumber),
+            taxOffice: customer.taxOffice,
+            invoiceCount: Number(customer.invoiceCount),
+            contactNumber: customer.contactNumber
+        })
             .then((data) => {
-                dispatch(actionCreators.GetAllCustomersApi(data))
+                dispatch(actionCreators.CustomersUpdate(data))
             }).catch((error) => {
                 console.log(error.message, "error");
             });
     };
 }
-export function getCustomerByIdApiRequest(id) {
+export function insertCustomerApiRequest(customer) {
     return async (dispatch) => {
-        axiosInstance.get("/customers/" + id)
+        axiosInstance.post("/customers", customer)
             .then((data) => {
-                dispatch(actionCreators.GetAllCustomerByIdApi(data))
+                dispatch(actionCreators.CustomersAdd(data))
+            }).catch((error) => {
+                console.log(error.message, "error");
+            });
+    };
+}
+export function getCustomerApiRequest() {
+    return async (dispatch) => {
+        axiosInstance.get("/customers")
+            .then((data) => {
+                dispatch(actionCreators.GetAllCustomersApi(data))
+
             }).catch((error) => {
                 console.log(error.message, "error");
             });

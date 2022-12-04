@@ -1,11 +1,9 @@
 import { matchSorter } from "match-sorter";
 import React from "react";
+import Table from 'react-bootstrap/Table';
 import { useTable, useSortBy, usePagination, useFilters } from "react-table";
 
-export default function Table({ columns, data, initialState }) {
-    function matchSorterFn(rows, id, filterValue) {
-        return matchSorter(rows, filterValue, { keys: [(row) => row.values[id]] });
-    }
+export default function DataTable({ columns, data, initialState }) {
     function DefaultColumnFilter({
         column: { filterValue, preFilteredRows, setFilter },
     }) {
@@ -59,7 +57,7 @@ export default function Table({ columns, data, initialState }) {
 
     return (
         <>
-            <table {...getTableProps()}>
+            <Table {...getTableProps()} responsive>
                 <thead>
                     {headerGroups.map((headerGroup) => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
@@ -67,7 +65,7 @@ export default function Table({ columns, data, initialState }) {
                                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                                     {column.render("Header")}
                                     <span>
-                                        {column.render("Header") !== '' && ((column.isSortedDesc ? " 🔽" : " 🔼"))}
+                                        {column.render("Header") !== '' && ((column.isSortedDesc ? "↓" : "↑"))}
                                     </span>
                                     {/* <div>{column.render("Header") !== '' && column.canFilter ? column.render("Filter") : null}</div> */}
                                 </th>
@@ -89,27 +87,27 @@ export default function Table({ columns, data, initialState }) {
                         );
                     })}
                 </tbody>
-            </table>
+            </Table>
             <div className="pagination">
-                <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+                <button className="pagination-button" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
                     {"<<"}
-                </button>{" "}
-                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+                </button>
+                <button className="pagination-button" onClick={() => previousPage()} disabled={!canPreviousPage}>
                     {"<"}
-                </button>{" "}
-                <button onClick={() => nextPage()} disabled={!canNextPage}>
+                </button>
+                <button className="pagination-button" onClick={() => nextPage()} disabled={!canNextPage}>
                     {">"}
-                </button>{" "}
-                <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+                </button>
+                <button className="pagination-button" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
                     {">>"}
-                </button>{" "}
+                </button>
                 <span>
                     Page{" "}
                     <strong>
                         {pageIndex + 1} of {pageOptions.length}
                     </strong>{" "}
                 </span>
-                <span>
+                {/* <span>
                     | Go to page:{" "}
                     <input
                         type="number"
@@ -120,8 +118,9 @@ export default function Table({ columns, data, initialState }) {
                         }}
                         style={{ width: "100px" }}
                     />
-                </span>{" "}
+                </span>{" "} */}
                 <select
+                    className="pagination-select"
                     value={pageSize}
                     onChange={(e) => {
                         setPageSize(Number(e.target.value));

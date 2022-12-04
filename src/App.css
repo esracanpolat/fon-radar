@@ -1,26 +1,23 @@
-button {
-  height: 40px;
-  border-radius: 4px;
-  margin-top: 10px;
-  font-size: 15px;
-  display: inline-block;
-  text-align: center;
-  user-select: none;
-  font-weight: 600;
-  border-radius: 4px;
-  color: #ffffff;
-  border: 1px solid #14877c;
-  background-color: #14877c;
-  cursor: pointer;
-  margin: 0px 15px;
-  min-width: 100px;
+.header{
+  height:60px;
+  width: 100%;
+  background-color: #0d6efd;
 }
-
-button:hover {
-  background: #14877c;
-  color: #ffffff;
+.pagination{
+  display: flex;
+  align-items: center;
 }
-
+.pagination-button{
+  margin:5px;
+  border: none;
+  background-color: darkgrey;
+  border-radius: 2px;
+}
+.pagination-select{
+  height: 30px;
+  width: 90px;
+  border-radius:5px ;
+}
 table {
   width: 100%;
   padding: 1em;
@@ -38,7 +35,7 @@ th {
   text-align: left;
   padding: 8px;
   background-color: 1px solid #ffffff;
-  color: #14877c;
+  color: #385f92;
 }
 td {
   text-align: left;
@@ -51,12 +48,4 @@ tr {
 
 tr:nth-child(even) {
   background-color: #e0e0e0;
-}
-input {
-  width: 40%;
-  min-width: 200px;
-  border-radius: 10px;
-  border: 2px solid #14877c;
-  padding: 10px;
-  font-size: 14px;
 }

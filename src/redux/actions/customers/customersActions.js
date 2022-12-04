@@ -3,6 +3,10 @@ import * as actionTypes from "../customers/customersActionTypes";
 export function CustomersAdd(customer) {
     return { type: actionTypes.CUSTOMER_ADD, payload: customer }
 }
+
+export function CustomersUpdate(customer) {
+    return { type: actionTypes.CUSTOMER_UPDATE, payload: customer }
+}
 export function CustomersRemove(customer) {
     return {
         type: actionTypes.CUSTOMER_REMOVE,
@@ -21,10 +25,3 @@ export function GetAllCustomersApi(customers) {
     };
 }
 
-export function GetAllCustomerByIdApi(customer) {
-    console.log(customer, "customer");
-    return {
-        type: actionTypes.GET_CUSTOMERS_BY_ID,
-        payload: customer
-    };
-}

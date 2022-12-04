@@ -5,22 +5,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUsersApiRequest } from '../../redux/services/usersService';
 import jwtEncode from "jwt-encode";
 import "../login/login.css";
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
     const { register, handleSubmit } = useForm();
     const dispatch = useDispatch();
     const users = useSelector(state => state.users)
-
+    const navigate = useNavigate();
     useEffect(() => {
         dispatch(getUsersApiRequest());
-        console.log(users.users.includes((x) => x.username), "users");
     }, []);
 
     function onSubmit(p) {
-        const findUser = users.users.map((x) => { return (x.username === p.email && x.password == p.password) ? true : false });
-        if (findUser.includes(true)) {
-            const decode = jwtEncode(p)
-            console.log(decode, "found user");
+        console.log(p, "p", users.users);
+
+        const findUser = users.users.map((x) => { return (x.username == p.email && x.password == p.password) ? true : false });
+        console.log(findUser, findUser.includes(true), "findUser");
+
+        if (findUser.includes(true) === true) {
+            // const decode = jwtEncode(p)
+            // console.log(decode, "found user");
+            navigate("/customers");
+        } else {
+            console.log(p, "p")
         }
     }
     return (

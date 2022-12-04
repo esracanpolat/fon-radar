@@ -3,11 +3,15 @@ import { useDispatch } from 'react-redux';
 import { CustomersSearch } from '../../redux/actions/customers/customersActions';
 import { CreateCustomer } from './CreateCustomer';
 import CustomerList from './CustomerList';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
-export default function Customers() {
+
+export default function Customers(props) {
     const dispatch = useDispatch();
     const [search, setSearch] = useState();
+    const [createModal, setCreateModal] = useState(false);
 
+    console.log(props, "props");
     function searchFunc(e) {
         // const newCustomers = e ? customerData.filter((searchValue) => (searchValue.companyName).includes(e)) : customers
         // setCustomerData(newCustomers);
@@ -16,16 +20,15 @@ export default function Customers() {
     }
     return (
         <div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <CreateCustomer />
-            </div>
-            <div className='d-flex justify-space-between'>
-                <div>
-                    <input value={search} onChange={(e) => searchFunc(e.target.value)} />
+            <CreateCustomer createModal={createModal} setCreateModal={setCreateModal} />
+            <div className='d-flex justify-content-between w-100'>
+                <div className='m-4 w-100'>
+                    <input className='w-100 form-control' placeHolder="Search for company name and tax number" value={search} onChange={(e) => searchFunc(e.target.value)} />
                 </div>
-                <div>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        New Customer
+                <div className='m-4 w-25'>
+                    <button type="button" class="btn btn-primary w-100" onClick={() => setCreateModal(true)}>
+                        <FormattedMessage
+                            id="newCustomer" />
                     </button>
                 </div>
             </div>
