@@ -74,8 +74,8 @@ export default function CustomerList() {
                 accessor: 'id',
                 Cell: ({ value }) => (<div className='d-inline-flex'>
                     <button className="btn btn-primary" onClick={() => detailButton({ value })}>Detail</button>
-                    <button className="btn btn-warning" onClick={() => editButton(value)} >Edit</button>
-                    <button className="btn btn-danger" onClick={() => deleteButton({ value })}>Delete</button>
+                    <button className="btn btn-secondary ml-2" onClick={() => editButton(value)} >Edit</button>
+                    <button className="btn btn-danger ml-2" onClick={() => deleteButton({ value })}>Delete</button>
                 </div>)
             },
         ]

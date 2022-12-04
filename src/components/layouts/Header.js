@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export const Header = ({ setLocale }) => {
+export const Header = ({ setLocale, lang, setLang }) => {
+    const [selectedOption, setSelectedOption] = useState()
     function SelectLang(e) {
         setLocale(e)
+        setSelectedOption(e)
     }
     return (
         <div className='d-flex justify-content-between align-items-center header' >
@@ -10,7 +12,7 @@ export const Header = ({ setLocale }) => {
                 Fon Radar
             </div>
             <div className='m-2'>
-                <select class="form-select" aria-label="Default select example" onChange={(e) => SelectLang(e.target.value)}>
+                <select class="form-select" value={selectedOption} onChange={(e) => SelectLang(e.target.value)}>
                     <option selected>Select Language</option>
                     <option value="en">English</option>
                     <option value="tr">Turkish</option>

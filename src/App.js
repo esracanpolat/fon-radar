@@ -25,6 +25,7 @@ function App() {
       lang = French;
     }
   }
+  console.log(lang, "lang");
   return (
     <>
       <Router>

@@ -4,28 +4,7 @@ import Table from 'react-bootstrap/Table';
 import { useTable, useSortBy, usePagination, useFilters } from "react-table";
 
 export default function DataTable({ columns, data, initialState }) {
-    function DefaultColumnFilter({
-        column: { filterValue, preFilteredRows, setFilter },
-    }) {
-        const count = preFilteredRows.length
 
-        return (
-            <input
-                value={filterValue || ''}
-                onChange={e => {
-                    setFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
-                }}
-                placeholder={`Search ${count} records...`}
-            />
-        )
-    };
-    const defaultColumn = React.useMemo(
-        () => ({
-            // Let's set up our default Filter UI
-            Filter: DefaultColumnFilter,
-        }),
-        []
-    )
     const {
         getTableProps,
         getTableBodyProps,
@@ -46,7 +25,6 @@ export default function DataTable({ columns, data, initialState }) {
             columns,
             data,
             initialState,
-            defaultColumn
         },
         useFilters,
         useSortBy,
@@ -89,25 +67,26 @@ export default function DataTable({ columns, data, initialState }) {
                 </tbody>
             </Table>
             <div className="pagination">
-                <button className="pagination-button" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                    {"<<"}
-                </button>
-                <button className="pagination-button" onClick={() => previousPage()} disabled={!canPreviousPage}>
-                    {"<"}
-                </button>
-                <button className="pagination-button" onClick={() => nextPage()} disabled={!canNextPage}>
-                    {">"}
-                </button>
-                <button className="pagination-button" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-                    {">>"}
-                </button>
-                <span>
-                    Page{" "}
-                    <strong>
-                        {pageIndex + 1} of {pageOptions.length}
-                    </strong>{" "}
-                </span>
-                {/* <span>
+                <div>
+                    <button className="pagination-button" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+                        {"<<"}
+                    </button>
+                    <button className="pagination-button" onClick={() => previousPage()} disabled={!canPreviousPage}>
+                        {"<"}
+                    </button>
+                    <button className="pagination-button" onClick={() => nextPage()} disabled={!canNextPage}>
+                        {">"}
+                    </button>
+                    <button className="pagination-button" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+                        {">>"}
+                    </button>
+                    <span>
+                        Page{" "}
+                        <strong>
+                            {pageIndex + 1} of {pageOptions.length}
+                        </strong>{" "}
+                    </span>
+                    {/* <span>
                     | Go to page:{" "}
                     <input
                         type="number"
@@ -119,19 +98,20 @@ export default function DataTable({ columns, data, initialState }) {
                         style={{ width: "100px" }}
                     />
                 </span>{" "} */}
-                <select
-                    className="pagination-select"
-                    value={pageSize}
-                    onChange={(e) => {
-                        setPageSize(Number(e.target.value));
-                    }}
-                >
-                    {[10, 20, 30, 40, 50].map((pageSize) => (
-                        <option key={pageSize} value={pageSize}>
-                            Show {pageSize}
-                        </option>
-                    ))}
-                </select>
+                    <select
+                        className="pagination-select"
+                        value={pageSize}
+                        onChange={(e) => {
+                            setPageSize(Number(e.target.value));
+                        }}
+                    >
+                        {[10, 20, 30, 40, 50].map((pageSize) => (
+                            <option key={pageSize} value={pageSize}>
+                                Show {pageSize}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
         </>
     )

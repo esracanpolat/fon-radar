@@ -39,34 +39,29 @@ export const UpdateCustomer = ({ showModal, setShowModal }) => {
                     <div>
                         <label for="companyName" class="form-label">companyName</label>
                         <input type="text" class="form-control" id="companyName"  {...register("companyName")} />
-                        <div id="companyName" class="form-text" >We'll never share your email with anyone else.</div>
                     </div>
                     <div>
-                        <label for="contactNumber" class="form-label">contactNumber</label>
+                        <label for="contactNumber" class="form-label">Contact Number</label>
                         <input type="text" class="form-control" id="contactNumber"
 
                             aria-describedby="pass"
                             {...register("contactNumber")} />
-                        <div id="pass" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div>
-                        <label for="invoiceCount" class="form-label">invoiceCount</label>
+                        <label for="invoiceCount" class="form-label">Invoice Count</label>
                         <input type="text" class="form-control" id="invoiceCount"
                             aria-describedby="pass"
                             {...register("invoiceCount")} />
-                        <div id="pass" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div>
-                        <label for="exampleInputPassword1" class="form-label">taxNumber</label>
+                        <label for="exampleInputPassword1" class="form-label">Tax Number</label>
                         <input type="text" class="form-control"
                             id="exampleInputPassword1" aria-describedby="pass" {...register("taxNumber")} />
-                        <div id="text" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div>
-                        <label for="exampleInputPassword1" class="form-label">taxOffice</label>
+                        <label for="exampleInputPassword1" class="form-label">Tax Office</label>
                         <input type="text" class="form-control"
                             id="exampleInputPassword1" aria-describedby="pass" {...register("taxOffice")} />
-                        <div id="pass" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <Modal.Footer>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

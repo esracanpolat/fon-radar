@@ -13,19 +13,32 @@ export const CustomerDetail = () => {
         dispatch(getCustomerByIdApiRequest(id))
     }, [])
 
-    return (
-        <div className='row'>
+    return (<div>
+        <div className='row m-4'>
+            <h3>Müşteri Detayı</h3>
             {customerDetail !== (undefined || null) &&
-                (<div className='col'>
-                    {customerDetail.companyName}
-                    {customerDetail.contactNumber}
-                    {customerDetail.taxOffice}
-                    {customerDetail.taxNumber}
-                    {customerDetail.invoiceCount}
+                (<div className='card col m-4'>
+                    <div className="m-4" >
+                        <div>
+                            <p>Company Name: {customerDetail.companyName}</p>
+                        </div>
+                        <div>
+                            <p>Contact Number: {customerDetail.contactNumber}</p>
+                        </div>
+                        <div>
+                            <p>Tax Office: {customerDetail.taxOffice}</p>
+                        </div><div>
+                            <p>Tax Number:  {customerDetail.taxNumber}</p>
+                        </div>
+                        <div>
+                            <p>Invoice Count: {customerDetail.invoiceCount}</p>
+                        </div>
+                    </div>
                 </div>)}
             <div className='col'>
 
             </div>
         </div>
+    </div>
     )
 }
